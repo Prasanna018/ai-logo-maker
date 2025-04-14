@@ -3,6 +3,10 @@ import React, { useState } from 'react'
 import LogoTitle from './_components/LogoTitle'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import LogoDesc from './_components/LogoDesc'
+import LogoPallete from './_components/LogoPallete'
+import LogoDesign from './_components/LogoDesign'
+import LogoIdea from './_components/LogoIdea'
 
 function CreateLogo() {
     const [step, setStep] = useState(1);
@@ -14,6 +18,7 @@ function CreateLogo() {
                 [field]: value
             })
         )
+        console.log(formData)
 
     }
     return (
@@ -22,15 +27,35 @@ function CreateLogo() {
             {
                 step == 1 ? <LogoTitle
                     onHandleChange={(v) => onHandleChange('title', v)}
-                ></LogoTitle> : null
+                ></LogoTitle> :
+                    step == 2 ?
+                        <LogoDesc onHandleChange={(v) => onHandleChange('desc', v)}></LogoDesc> :
+
+                        step == 3 ? <LogoPallete
+                            onHandleChange={(v) => onHandleChange('pallete', v)}
+                        ></LogoPallete> :
+
+                            step == 4 ? <LogoDesign
+                                onHandleChange={(v) => onHandleChange('design', v)}
+                            ></LogoDesign> :
+                                step == 5 ? <LogoIdea
+                                    onHandleChange={(v) => onHandleChange('idea', v)}
+                                ></LogoIdea> :
+
+                                    null
             }
 
 
             <div className='flex justify-between'>
 
                 {step != 1 && <Button
+                    className='cursor-pointer '
                     onClick={() => setStep(step - 1)}
                     variant={'outline'}><ArrowLeft></ArrowLeft>Previous</Button>}
+
+
+
+
 
                 <Button
                     onClick={() => setStep(step + 1)}
