@@ -27,18 +27,24 @@ function CreateLogo() {
             {
                 step == 1 ? <LogoTitle
                     onHandleChange={(v) => onHandleChange('title', v)}
+                    formData={formData}
                 ></LogoTitle> :
                     step == 2 ?
-                        <LogoDesc onHandleChange={(v) => onHandleChange('desc', v)}></LogoDesc> :
+                        <LogoDesc onHandleChange={(v) => onHandleChange('desc', v)}
+                            formData={formData}
+                        ></LogoDesc> :
 
                         step == 3 ? <LogoPallete
+                            formData={formData}
                             onHandleChange={(v) => onHandleChange('pallete', v)}
                         ></LogoPallete> :
 
                             step == 4 ? <LogoDesign
+                                formData={formData}
                                 onHandleChange={(v) => onHandleChange('design', v)}
                             ></LogoDesign> :
                                 step == 5 ? <LogoIdea
+                                    formData={formData}
                                     onHandleChange={(v) => onHandleChange('idea', v)}
                                 ></LogoIdea> :
 
